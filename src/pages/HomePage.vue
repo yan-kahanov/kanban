@@ -1,5 +1,7 @@
+<script setup>
+import KanbanModule from '@/modules/kanban/kanbanModule.vue'
+</script>
+
 <template>
-  <div>
-    <div class="text-3xl font-bold underline">Hello world!</div>
-  </div>
+  <kanban-module />
 </template>
