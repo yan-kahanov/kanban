@@ -1,3 +1,15 @@
+<script setup>
+defineProps({
+  modelValue: { type: String, default: '' }
+})
+defineEmits(['update:modelValue'])
+</script>
+
 <template>
-    <input type="text" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+  <input
+    :value="modelValue"
+    @input="(e) => $emit('update:modelValue', e.target.value)"
+    type="text"
+    class="py-3 px-4 border block w-full border-gray-200 rounded-lg text-sm hover:border-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-slate-700 border-gray-700 text-gray-400 outline-none transition-all"
+  />
 </template>

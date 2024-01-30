@@ -1,6 +1,14 @@
+<script setup>
+defineProps({
+  bgColor: { type: String, default: 'bg-slate-800' }
+})
+</script>
+
 <template>
   <div
-    class="border rounded-xl shadow-sm p-6 bg-slate-800 border-gray-700 transition-all"
+    ref="cardEl"
+    class="border rounded-xl shadow-sm p-6 border-gray-700 transition-all"
+    :class="`${bgColor}`"
   >
     <slot></slot>
   </div>

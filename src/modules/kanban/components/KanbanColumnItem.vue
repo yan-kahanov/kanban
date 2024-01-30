@@ -1,14 +1,25 @@
 <script setup>
 import { ButtonUi, CardUi } from '@/ui/'
-import { KanbanTaskList } from '.';
+import { KanbanTaskList } from '.'
+import { useColumnsStore } from '@/stores/columns'
+import { ref } from 'vue';
 
-defineProps({
+const props = defineProps({
   column: { type: Object }
 })
+
+const columnsStore = useColumnsStore()
+const columnEl = ref()
+const { removeColumn } = columnsStore
+
+const handleRemoveColumn = () => {
+  columnEl.value.$el.className = 'transition-all overflow-hidden w-0 p-0 border-none opacity-0'
+  setTimeout(() => removeColumn(props.column.id), 150)
+}
 </script>
 
 <template>
-  <card-ui class="flex-shrink-0 h-max w-96 py-3">
+  <card-ui class="flex-shrink-0 h-max w-96 py-3" ref="columnEl">
     <div class="flex justify-between items-center gap-2">
       <div
         class="text-2xl font-semibold overflow-hidden"
@@ -21,7 +32,7 @@ defineProps({
         {{ column.title }}
       </div>
       <div class="flex gap-1 shrink-0">
-        <button-ui color="gray" class="w-10 h-10">
+        <button-ui @click="handleRemoveColumn" color="gray" class="w-10 h-10">
           <svg
             width="24"
             height="24"
@@ -56,6 +67,6 @@ defineProps({
         ></button-ui>
       </div>
     </div>
-    <kanban-task-list :tasks="column.tasks"/>
+    <kanban-task-list :column-id="column.id" />
   </card-ui>
 </template>

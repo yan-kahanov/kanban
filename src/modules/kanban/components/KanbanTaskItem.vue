@@ -8,7 +8,8 @@ defineProps({
 
 <template>
   <card-ui
-    class="bg-slate-700 hover:bg-slate-600 cursor-pointer pt-1 pb-3 px-3"
+    class="hover:bg-slate-600 cursor-pointer pt-1 pb-3 px-3"
+    bgColor="bg-slate-700"
   >
     <div class="text-xl truncate">{{ task.id }}{{ ')' }} {{ task.title }}</div>
     <div

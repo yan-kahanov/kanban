@@ -1,11 +1,22 @@
 <script setup>
+import { useColumnsStore } from '@/stores/columns'
 import { ButtonUi, InputUi, CardUi } from '@/ui/'
+import { ref } from 'vue'
+
+const columnsStore = useColumnsStore()
+const { addColumn } = columnsStore
+const column = ref('')
+
+const createColumn = () => {
+  addColumn({ id: new Date().getTime(), title: column.value })
+  column.value = ''
+}
 </script>
 
 <template>
   <card-ui class="flex gap-4 p-5">
-    <input-ui type="text" placeholder="Название стадии" />
-    <button-ui class="shrink-0">
+    <input-ui v-model="column" type="text" placeholder="Название стадии" />
+    <button-ui class="shrink-0" :disabled="!column.length" @click="createColumn">
       Создать
       <svg
         class="flex-shrink-0 w-4 h-4"
