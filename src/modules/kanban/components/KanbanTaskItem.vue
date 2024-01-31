@@ -23,6 +23,7 @@ const onDragstart = () => {
     @mouseover="isHover = true"
     @mouseleave="isHover = false"
     @dragstart="onDragstart"
+    @click="() => $router.push(`/tasks/${task.id}`)"
     :draggable="true"
   >
     <div class="text-xl truncate">{{ task.title }}</div>
