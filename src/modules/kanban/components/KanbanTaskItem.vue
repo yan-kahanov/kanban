@@ -1,22 +1,29 @@
 <script setup>
 import { CardUi } from '@/ui/'
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import { useTasksStore } from '@/stores/tasks'
 
-defineProps({
+const props = defineProps({
   task: { type: Object }
 })
 
 const tasksStore = useTasksStore()
 const isHover = ref(false)
+const setDragTask = inject('setDragTask')
+
+const onDragstart = () => {
+  setDragTask(props.task)
+}
 </script>
 
 <template>
   <card-ui
-    class="hover:bg-slate-600 cursor-pointer pt-1 pb-3 px-3 relative"
+    class="hover:bg-slate-600 cursor-pointer pt-1 pb-3 px-3 relative select-none"
     bgColor="bg-slate-700"
     @mouseover="isHover = true"
     @mouseleave="isHover = false"
+    @dragstart="onDragstart"
+    :draggable="true"
   >
     <div class="text-xl truncate">{{ task.title }}</div>
     <div

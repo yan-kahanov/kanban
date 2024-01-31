@@ -1,8 +1,16 @@
 <script setup>
+import { provide, ref } from 'vue'
 import { KanbanColumnItem } from '../components'
 import { useColumnsStore } from '@/stores/columns'
 
 const columnsStore = useColumnsStore()
+const dragTask = ref(null)
+
+const setDragTask = (value) => {
+  dragTask.value = value
+}
+provide('dragTask', dragTask)
+provide('setDragTask', setDragTask)
 </script>
 
 <template>
@@ -14,8 +22,6 @@ const columnsStore = useColumnsStore()
         :key="column.id"
       />
     </div>
-    <div v-else class="w-full text-center">
-      Нет стадий
-    </div>
+    <div v-else class="w-full text-center">Нет стадий</div>
   </div>
 </template>
