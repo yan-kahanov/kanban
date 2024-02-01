@@ -12,7 +12,7 @@ const props = defineProps({
 const columnsStore = useColumnsStore()
 const tasksStore = useTasksStore()
 const { removeColumn } = columnsStore
-const { changeColumnId } = tasksStore
+const { changeColumnId, removeTasksByColumnId } = tasksStore
 const columnEl = ref()
 const isModalOpened = ref(false)
 const isDragOver = ref(false)
@@ -20,7 +20,10 @@ const dragTask = inject('dragTask')
 
 const handleRemoveColumn = () => {
   columnEl.value.$el.className = 'transition-all overflow-hidden w-0 p-0 border-none opacity-0'
-  setTimeout(() => removeColumn(props.column.id), 150)
+  setTimeout(() => {
+    removeColumn(props.column.id)
+    removeTasksByColumnId(props.column.id)
+  }, 150)
 }
 
 const onDrop = () => {

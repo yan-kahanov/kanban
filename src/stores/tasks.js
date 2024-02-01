@@ -1,17 +1,19 @@
 import { defineStore } from 'pinia'
 
-const example = [
-  { id: 1, title: '123', text: '123', columnId: 1 }
-]
-
 export const useTasksStore = defineStore('tasks', {
-  state: () => ({ tasks: example }),
+  state: () => ({ tasks: [] }),
   actions: {
+    setTasks(tasks){
+      this.tasks = tasks
+    },
     addTask(task, columnId) {
-      this.tasks.push({ ...task, columnId })
+      this.tasks = [...this.tasks, { ...task, columnId }]
     },
     removeTask(taskId) {
       this.tasks = this.tasks.filter(task => task.id !== taskId)
+    },
+    removeTasksByColumnId(columndId){
+      this.tasks = this.tasks.filter(task => task.columnId !== columndId)
     },
     changeColumnId(taskId, columnId) {
       this.tasks = this.tasks.map(task => {

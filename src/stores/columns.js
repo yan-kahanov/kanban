@@ -1,12 +1,11 @@
 import { defineStore } from 'pinia'
 
-const example = [
-  { id: 1, title: '123' }
-]
-
 export const useColumnsStore = defineStore('columns', {
-  state: () => ({ columns: example }),
+  state: () => ({ columns: [] }),
   actions: {
+    setColumns(columns){
+      this.columns = columns
+    },
     addColumn(column) {
       this.columns = [...this.columns, column]
     },

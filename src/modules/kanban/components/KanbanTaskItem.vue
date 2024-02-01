@@ -40,7 +40,7 @@ const onDragstart = () => {
     <button
       class="absolute top-1 right-1 w-6 h-6 text-xs transition-all hover:bg-slate-400/25 rounded-full flex items-center justify-center"
       :class="{ 'opacity-0': !isHover }"
-      @click.prevent="tasksStore.removeTask(task.id)"
+      @click.stop="tasksStore.removeTask(task.id)"
       color="gray"
     >
       ✕
