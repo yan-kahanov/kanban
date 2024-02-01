@@ -41,7 +41,7 @@ const onDragover = (e) => {
 
 <template>
   <card-ui
-    class="flex-shrink-0 h-max w-96 p-3"
+    class="flex-shrink-0 h-max w-80 md:w-96 p-3 select-none"
     :class="{ '!border-blue-500': isDragOver }"
     ref="columnEl"
     @dragover="onDragover"

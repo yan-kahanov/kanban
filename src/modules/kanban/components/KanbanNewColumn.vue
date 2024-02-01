@@ -15,7 +15,7 @@ const createColumn = () => {
 
 <template>
   <card-ui class="p-5">
-    <form @submit.prevent="createColumn" class="flex gap-4 ">
+    <form @submit.prevent="createColumn" class="flex gap-4">
       <input-ui v-model="column" type="text" placeholder="Название стадии" />
       <button-ui class="shrink-0" type="submit" :disabled="!column.length">
         Создать

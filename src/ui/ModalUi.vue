@@ -12,7 +12,7 @@ defineEmits(['closeModal'])
     <Transition name="modal-outer">
       <div
         v-show="isOpened"
-        class="fixed inset-x-0 inset-y-0 bg-black/50 transition-all"
+        class="fixed inset-x-0 inset-y-0 bg-black/50 transition-all z-10"
         @click="() => $emit('closeModal')"
       >
         <card-ui
