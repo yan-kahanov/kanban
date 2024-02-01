@@ -23,9 +23,9 @@ const deleteTask = () => {
     <div class="container mx-auto px-4">
       <button-ui color="gray" @click="$router.push('/')">На главную</button-ui>
       <task-details-edit v-if="isEdit" v-model:is-edit="isEdit"/>
-      <card-ui v-else class="mt-3">
-        <div class="text-4xl font-semibold">{{ task.title }}</div>
-        <div class="text-xl mt-5 whitespace-pre">{{ task.text }}</div>
+      <card-ui v-else class="mt-3 overflow-hidden">
+        <div class="text-4xl font-semibold break-all">{{ task.title }}</div>
+        <div class="text-xl mt-5 whitespace-pre-wrap break-all">{{ task.text }}</div>
         <div class="flex gap-2 mt-5">
           <button-ui color="gray" @click="isEdit = true"> Редеактировать </button-ui>
           <button-ui color="red" @click="deleteTask"> Удалить </button-ui>
