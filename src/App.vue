@@ -25,7 +25,7 @@ watch([columns, tasks], () => {
 </script>
 
 <template>
-  <div class="h-full bg-slate-900 text-slate-200">
+  <div class="h-full bg-slate-900 text-slate-200 overflow-auto">
     <RouterView />
   </div>
 </template>
